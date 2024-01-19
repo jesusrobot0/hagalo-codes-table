@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Rows2, FilePlus } from "lucide-react";
-import { NavbarItem } from "..";
+import { NavbarItem, YouAreHere } from "..";
 
 const NavbarItems = [
   {
@@ -21,7 +21,7 @@ export function Navbar() {
       <Link href="/list">
         <span className="text-xl font-bold text-[#d73225]">Hágalo</span>
         <span className="mx-1">/</span>
-        <span className="text-gray-500">Lista de productos</span>
+        <YouAreHere />
       </Link>
 
       <ul className="flex gap-5">
