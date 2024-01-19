@@ -1,9 +1,12 @@
-import { TitlePage } from "@/components";
+import { Form, TitlePage } from "@/components";
 
 export default function NewProductPage() {
   return (
-    <>
-      <TitlePage title="Agregar producto" />
-    </>
+    <div className="flex justify-center">
+      <div className="w-2/3">
+        <TitlePage title="Agregar producto" />
+        <Form />
+      </div>
+    </div>
   );
 }
