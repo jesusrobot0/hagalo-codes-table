@@ -4,12 +4,12 @@ import { NavbarItem } from "..";
 
 const NavbarItems = [
   {
-    title: "Products",
+    title: "Productos",
     path: "/list",
     icon: <Rows2 size={20} />,
   },
   {
-    title: "Add New",
+    title: "Agregar",
     path: "/new",
     icon: <FilePlus size={20} />,
   },
