@@ -1,7 +1,9 @@
+import { TitlePage } from "@/components";
+
 export default function NewProductPage() {
   return (
-    <div>
-      <h1>Hello Page</h1>
-    </div>
+    <>
+      <TitlePage title="Agregar producto" />
+    </>
   );
 }
