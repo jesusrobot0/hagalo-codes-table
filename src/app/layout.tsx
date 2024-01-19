@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { BodyFont } from "@/config/fonts";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hágalo Lista de Productos",
-  description: "Lista de productos para el empleado de ferreterias Hágalo",
+  description: "Lista de productos para el empleado de Ferreterias Hágalo",
 };
 
 export default function RootLayout({
@@ -16,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={BodyFont.className}>{children}</body>
     </html>
   );
 }
