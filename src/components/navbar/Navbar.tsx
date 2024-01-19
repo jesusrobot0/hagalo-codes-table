@@ -10,7 +10,7 @@ const NavbarItems = [
   },
   {
     title: "Add New",
-    path: "/add",
+    path: "/new",
     icon: <FilePlus size={20} />,
   },
 ];

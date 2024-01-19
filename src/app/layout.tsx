@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${BodyFont.className} bg-[#fbfbfb]`}>
         <Navbar />
-        {children}
+        <main className="px-4">{children}</main>
       </body>
     </html>
   );
