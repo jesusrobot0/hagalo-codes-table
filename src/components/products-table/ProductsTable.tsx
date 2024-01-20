@@ -24,7 +24,7 @@ export function ProductsTable({ products }: Props) {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr className="border-b-[1px] border-[#ccc]">
+            <tr key={product.id} className="border-b-[1px] border-[#ccc]">
               <td className="text-left p-2">
                 <div className="flex items-center gap-4">
                   <div className="w-[60px] h-[60px] bg-orange-200 hidden md:block"></div>
