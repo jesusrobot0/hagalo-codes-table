@@ -5,7 +5,6 @@ export default function ProductListPage() {
   return (
     <>
       <TitlePage title="Lista de productos" />
-
       <ProductsTable />
     </>
   );

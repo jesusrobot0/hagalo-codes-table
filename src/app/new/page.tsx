@@ -1,6 +1,6 @@
 import { Form, TitlePage } from "@/components";
 
-export default async function NewProductPage() {
+export default function NewProductPage() {
   return (
     <div className="flex justify-center">
       <div className="w-full sm:w-2/3">
