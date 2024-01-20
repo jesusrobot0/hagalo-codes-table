@@ -17,10 +17,10 @@ const NavbarItems = [
 
 export function Navbar() {
   return (
-    <nav className="p-4 mb-8 flex justify-between items-center border-b border-b-gray-200 bg-[#fff] shadow-sm">
+    <nav className="py-5 px-16 mb-8 flex justify-between items-center border-b border-b-gray-200 bg-[#fff] shadow-sm">
       <Link href="/list">
-        <span className="text-xl font-bold text-[#d73225]">Hágalo</span>
-        <span className="mx-1">/</span>
+        <span className="text-3xl font-bold text-[#d73225]">Hágalo</span>
+        <span className="mx-2">/</span>
         <YouAreHere />
       </Link>
 
