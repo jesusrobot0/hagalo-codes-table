@@ -1,4 +1,6 @@
+"use client";
 import { MoreVertical } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface Product {
   id: string;
@@ -6,11 +8,17 @@ interface Product {
   code: number;
 }
 
-interface Props {
-  products: Product[];
-}
+export function ProductsTable() {
+  const [products, setProducts] = useState<Product[]>();
 
-export function ProductsTable({ products }: Props) {
+  useEffect(() => {
+    fetch("/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, []);
+
   return (
     <div>
       <table className="w-full border-[1px] border-[#dadada] text-sm sm:text-base">
@@ -23,7 +31,7 @@ export function ProductsTable({ products }: Props) {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {products?.map((product) => (
             <tr key={product.id} className="border-b-[1px] border-[#ccc]">
               <td className="text-left p-2">
                 <div className="flex items-center gap-4">

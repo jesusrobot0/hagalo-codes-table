@@ -1,15 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 interface Category {
   id: string;
   name: string;
-}
-
-interface Props {
-  categories: Category[];
 }
 
 const initialState = {
@@ -18,8 +14,9 @@ const initialState = {
   category: "",
 };
 
-export function Form({ categories }: Props) {
+export function Form() {
   const [formState, setFormState] = useState(initialState);
+  const [categories, setCategories] = useState<Category[]>();
 
   const handleTitleChange = (event: React.FormEvent) => {
     const value = (event.target as HTMLInputElement).value;
@@ -66,6 +63,15 @@ export function Form({ categories }: Props) {
     toast.success(`Se a guardado correctamente ${formState.title}`);
   };
 
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setCategories(data);
+      });
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
       <Toaster position="bottom-right" gutter={8} />
@@ -99,7 +105,7 @@ export function Form({ categories }: Props) {
           onChange={handleCategoryChange}
         >
           <option>Seleccione una categoría</option>
-          {categories.map(({ id, name }) => (
+          {categories?.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
             </option>
