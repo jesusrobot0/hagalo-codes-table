@@ -4,8 +4,9 @@ import "./globals.css";
 import { Navbar } from "@/components";
 
 export const metadata: Metadata = {
-  title: "Hágalo Lista de Productos",
-  description: "Lista de productos para el empleado de Ferreterias Hágalo",
+  title: "Hágalo lista de códigos",
+  description:
+    "Lista de códigos de los productos para el empleado de Ferreterias Hágalo",
 };
 
 export default function RootLayout({
