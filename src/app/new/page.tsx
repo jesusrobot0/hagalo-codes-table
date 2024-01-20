@@ -1,11 +1,19 @@
 import { Form, TitlePage } from "@/components";
 
-export default function NewProductPage() {
+async function getCategories() {
+  const response = await fetch("http://localhost:3000/api/categories");
+  const data = await response.json();
+  return data;
+}
+
+export default async function NewProductPage() {
+  const categories = await getCategories();
+
   return (
     <div className="flex justify-center">
       <div className="w-2/3">
         <TitlePage title="Agregar producto" />
-        <Form />
+        <Form categories={categories} />
       </div>
     </div>
   );
