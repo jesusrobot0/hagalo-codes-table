@@ -13,7 +13,7 @@ interface Props {
 export function ProductsTable({ products }: Props) {
   return (
     <div>
-      <table className="w-full border-[1px] border-[#dadada] ">
+      <table className="w-full border-[1px] border-[#dadada] text-sm sm:text-base">
         <thead>
           <tr className="border-b-[1px] border-[#ccc] bg-[#fbfcfc]">
             <th className="text-left p-3">Título</th>
@@ -25,14 +25,16 @@ export function ProductsTable({ products }: Props) {
         <tbody>
           {products.map((product) => (
             <tr className="border-b-[1px] border-[#ccc]">
-              <td className="text-left p-2 flex items-center gap-4">
-                <div className="w-[60px] h-[60px] bg-orange-200"></div>
-                <span>{product.title}</span>
+              <td className="text-left p-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-[60px] h-[60px] bg-orange-200 hidden md:block"></div>
+                  <span>{product.title}</span>
+                </div>
               </td>
               <td className="text-left p-2">{product.code}</td>
               <td className="text-left p-2">{product.id}</td>
               <td className="text-left p-2">
-                <div className="flex justify-end">
+                <div className="flex justify-end items-center">
                   <button>
                     <MoreVertical />
                   </button>
