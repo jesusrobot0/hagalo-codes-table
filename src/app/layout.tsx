@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BodyFont } from "@/config/fonts";
-import "./globals.css";
 import { Navbar } from "@/components";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Hágalo lista de códigos",
