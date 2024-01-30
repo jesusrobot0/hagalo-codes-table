@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_API_URL } from "@/utils";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -45,7 +46,7 @@ export function Form() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("/api/products", {
+    const response = await fetch(`${BASE_API_URL}/api/products`, {
       method: "POST",
       body: JSON.stringify({
         title: formState.title,
@@ -64,7 +65,7 @@ export function Form() {
   };
 
   useEffect(() => {
-    fetch("/api/categories")
+    fetch(`${BASE_API_URL}/api/categories`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

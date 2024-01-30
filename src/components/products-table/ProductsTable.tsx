@@ -1,6 +1,7 @@
 "use client";
 
 import { MoreVertical } from "lucide-react";
+import { BASE_API_URL } from "@/utils";
 import { useEffect, useState } from "react";
 
 interface Product {
@@ -13,7 +14,7 @@ export function ProductsTable() {
   const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(`${BASE_API_URL}/api/products`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
