@@ -46,7 +46,7 @@ export function Form() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch(`${BASE_API_URL}/api/products`, {
+    const response = await fetch(`/api/products`, {
       method: "POST",
       body: JSON.stringify({
         title: formState.title,
@@ -65,7 +65,7 @@ export function Form() {
   };
 
   useEffect(() => {
-    fetch(`${BASE_API_URL}/api/categories`)
+    fetch(`/api/categories`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

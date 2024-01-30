@@ -14,7 +14,7 @@ export function ProductsTable() {
   const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
-    fetch(`${BASE_API_URL}/api/products`)
+    fetch(`/api/products`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
