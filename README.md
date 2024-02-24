@@ -17,7 +17,7 @@ Follow these steps to run the project in your local environment:
    pnpm install
    ```
 
-3. Configure the .env.template file
+3. **Configure the .env.template file**
 
    - First, copy the file to one with the name `.env`
    - and then update the database connection string with the valid credentials.
@@ -28,15 +28,31 @@ Follow these steps to run the project in your local environment:
    docker compose up -d
    ```
 
-5. Migrate db and generate the prisma client
+5. **Migrate db and generate the prisma client**
 
    ```bash
    pnpm dlx prisma migrate dev
    pnpm dlx prisma generate
    ```
 
-6. **Start the Application:**
+6. **Execute the seed command to populate the database**
+
+   ```bash
+   pnpm run seed
+   ```
+
+7. **Start the Application:**
 
    ```bash
    pnpm run dev
    ```
+
+## Tips
+
+Some tips that may be of help in the development of the project
+
+- You don't need any GUI database viewer, prisma already has its own.
+
+  ```bash
+   pnpm dlx prisma studio
+  ```
