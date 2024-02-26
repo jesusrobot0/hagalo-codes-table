@@ -1,76 +1,41 @@
-// import { BASE_API_URL } from "@/utils";
-import { Category } from "@prisma/client";
-// import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+"use client";
 
-const initialState = {
-  title: "",
-  code: "",
-  category: "",
-};
+import { addProduct } from "@/actions/actions-products";
+import { Category } from "@prisma/client";
+import { FormEvent, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Props {
   categories: Category[];
 }
 
+const initialState = {
+  title: "",
+  code: "",
+  categoryId: "",
+};
+
 export function Form({ categories }: Props) {
-  // const [formState, setFormState] = useState(initialState);
-  // const [categories, setCategories] = useState<Category[]>();
+  const [formState, setFormState] = useState(initialState);
 
-  // const handleTitleChange = (event: React.FormEvent) => {
-  //   const value = (event.target as HTMLInputElement).value;
-  //   setFormState({
-  //     ...formState,
-  //     title: value,
-  //   });
-  // };
+  const handleFormChange = (
+    e: FormEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormState({
+      ...formState,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
 
-  // const handleCodeChange = (event: React.FormEvent<HTMLInputElement>) => {
-  //   const value = (event.target as HTMLInputElement).value;
-  //   setFormState({
-  //     ...formState,
-  //     code: value,
-  //   });
-  // };
-
-  // const handleCategoryChange = (event: React.FormEvent<HTMLSelectElement>) => {
-  //   const value = (event.target as HTMLInputElement).value;
-  //   setFormState({
-  //     ...formState,
-  //     category: value,
-  //   });
-  // };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   const response = await fetch(`/api/products`, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       title: formState.title,
-  //       code: formState.code,
-  //       categoryId: formState.category,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   setFormState(initialState);
-  //   toast.success(`Se a guardado correctamente ${formState.title}`);
-  // };
-
-  // useEffect(() => {
-  //   fetch(`/api/categories`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setCategories(data);
-  //     });
-  // }, []);
+  const handleFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const newProduct = await addProduct(formState);
+    setFormState(initialState);
+    toast.success(`Se a guardado correctamente ${newProduct.title}`);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <Toaster position="bottom-right" gutter={8} />
       <label className="mb-6 flex flex-col gap-2">
         Título del producto
@@ -78,8 +43,9 @@ export function Form({ categories }: Props) {
           type="text"
           placeholder="Ej. Brida de dos patas"
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          // value={formState.title}
-          // onChange={handleTitleChange}
+          name="title"
+          value={formState.title}
+          onChange={handleFormChange}
         />
       </label>
 
@@ -89,8 +55,9 @@ export function Form({ categories }: Props) {
           type="text"
           placeholder="Ej. 6969420"
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          // value={formState.code}
-          // onChange={handleCodeChange}
+          name="code"
+          value={formState.code}
+          onChange={handleFormChange}
         />
       </label>
 
@@ -98,8 +65,9 @@ export function Form({ categories }: Props) {
         Categoría
         <select
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          // value={formState.category}
-          // onChange={handleCategoryChange}
+          name="categoryId"
+          value={formState.categoryId}
+          onChange={handleFormChange}
         >
           <option>Seleccione una categoría</option>
           {categories?.map(({ id, name }) => (
