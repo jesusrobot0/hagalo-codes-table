@@ -1,26 +1,13 @@
 "use client";
 
+import { Product } from "@prisma/client";
 import { MoreVertical } from "lucide-react";
-import { BASE_API_URL } from "@/utils";
-import { useEffect, useState } from "react";
 
-interface Product {
-  id: string;
-  title: string;
-  code: number;
+interface Props {
+  products?: Product[];
 }
 
-export function ProductsTable() {
-  const [products, setProducts] = useState<Product[]>();
-
-  useEffect(() => {
-    fetch(`/api/products`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, []);
-
+export function ProductsTable({ products = [] }: Props) {
   return (
     <div>
       <table className="w-full border-[1px] border-[#dadada] text-sm sm:text-base">
