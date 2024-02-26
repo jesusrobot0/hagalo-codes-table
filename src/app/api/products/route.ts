@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const newNote = await prisma.product.create({
     data: {
       title,
-      code: Number(code),
+      code: code,
       category: {
         connect: {
           id: categoryId,

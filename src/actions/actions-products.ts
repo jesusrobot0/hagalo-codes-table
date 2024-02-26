@@ -12,3 +12,13 @@ export async function getProducts(): Promise<Product[]> {
     throw new Error(`Error in obtaining products: ${error}`);
   }
 }
+
+export async function getCategories() {
+  try {
+    const categories = await prisma.category.findMany();
+
+    return categories;
+  } catch (error) {
+    throw new Error(`Error in obtaining categories: ${error}`);
+  }
+}

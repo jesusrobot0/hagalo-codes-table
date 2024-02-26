@@ -1,5 +1,3 @@
-"use client";
-
 import { Product } from "@prisma/client";
 import { MoreVertical } from "lucide-react";
 

@@ -1,13 +1,7 @@
-"use client";
-
-import { BASE_API_URL } from "@/utils";
-import { useEffect, useState } from "react";
+// import { BASE_API_URL } from "@/utils";
+import { Category } from "@prisma/client";
+// import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-
-interface Category {
-  id: string;
-  name: string;
-}
 
 const initialState = {
   title: "",
@@ -15,66 +9,68 @@ const initialState = {
   category: "",
 };
 
-export function Form() {
-  const [formState, setFormState] = useState(initialState);
-  const [categories, setCategories] = useState<Category[]>();
+interface Props {
+  categories: Category[];
+}
 
-  const handleTitleChange = (event: React.FormEvent) => {
-    const value = (event.target as HTMLInputElement).value;
-    setFormState({
-      ...formState,
-      title: value,
-    });
-  };
+export function Form({ categories }: Props) {
+  // const [formState, setFormState] = useState(initialState);
+  // const [categories, setCategories] = useState<Category[]>();
 
-  const handleCodeChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const value = (event.target as HTMLInputElement).value;
-    setFormState({
-      ...formState,
-      code: value,
-    });
-  };
+  // const handleTitleChange = (event: React.FormEvent) => {
+  //   const value = (event.target as HTMLInputElement).value;
+  //   setFormState({
+  //     ...formState,
+  //     title: value,
+  //   });
+  // };
 
-  const handleCategoryChange = (event: React.FormEvent<HTMLSelectElement>) => {
-    const value = (event.target as HTMLInputElement).value;
-    setFormState({
-      ...formState,
-      category: value,
-    });
-  };
+  // const handleCodeChange = (event: React.FormEvent<HTMLInputElement>) => {
+  //   const value = (event.target as HTMLInputElement).value;
+  //   setFormState({
+  //     ...formState,
+  //     code: value,
+  //   });
+  // };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleCategoryChange = (event: React.FormEvent<HTMLSelectElement>) => {
+  //   const value = (event.target as HTMLInputElement).value;
+  //   setFormState({
+  //     ...formState,
+  //     category: value,
+  //   });
+  // };
 
-    const response = await fetch(`/api/products`, {
-      method: "POST",
-      body: JSON.stringify({
-        title: formState.title,
-        code: Number(formState.code),
-        categoryId: formState.category,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    const data = await response.json();
+  //   const response = await fetch(`/api/products`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       title: formState.title,
+  //       code: formState.code,
+  //       categoryId: formState.category,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
-    setFormState(initialState);
-    toast.success(`Se a guardado correctamente ${formState.title}`);
-  };
+  //   setFormState(initialState);
+  //   toast.success(`Se a guardado correctamente ${formState.title}`);
+  // };
 
-  useEffect(() => {
-    fetch(`/api/categories`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setCategories(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`/api/categories`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategories(data);
+  //     });
+  // }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <Toaster position="bottom-right" gutter={8} />
       <label className="mb-6 flex flex-col gap-2">
         Título del producto
@@ -82,19 +78,19 @@ export function Form() {
           type="text"
           placeholder="Ej. Brida de dos patas"
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          value={formState.title}
-          onChange={handleTitleChange}
+          // value={formState.title}
+          // onChange={handleTitleChange}
         />
       </label>
 
       <label className="mb-6 flex flex-col gap-2">
         Código del producto
         <input
-          type="number"
+          type="text"
           placeholder="Ej. 6969420"
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          value={formState.code}
-          onChange={handleCodeChange}
+          // value={formState.code}
+          // onChange={handleCodeChange}
         />
       </label>
 
@@ -102,8 +98,8 @@ export function Form() {
         Categoría
         <select
           className="h-14 px-4 text-x border-2 border-[#edf0f3] rounded-md"
-          value={formState.category}
-          onChange={handleCategoryChange}
+          // value={formState.category}
+          // onChange={handleCategoryChange}
         >
           <option>Seleccione una categoría</option>
           {categories?.map(({ id, name }) => (
