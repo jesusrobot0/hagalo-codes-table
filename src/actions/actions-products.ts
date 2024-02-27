@@ -21,7 +21,17 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function addProduct(product: ProductInterface): Promise<Product> {
   try {
-    const newProduct = await prisma.product.create({ data: product });
+    const newProduct = await prisma.product.create({
+      data: {
+        title: product.title,
+        code: product.code,
+        category: {
+          connect: {
+            id: product.categoryId,
+          },
+        },
+      },
+    });
 
     return newProduct;
   } catch (error) {
