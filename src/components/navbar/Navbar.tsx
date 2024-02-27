@@ -18,9 +18,11 @@ const NavbarItems = [
 export function Navbar() {
   return (
     <nav className="py-5 px-5 sm:px-16 flex justify-between items-center border-b border-b-gray-200 bg-[#fff] shadow-sm fixed w-full">
-      <Link href="/list">
+      <Link href="/list" className="flex items-center">
         <span className="text-3xl font-bold text-[#d73225]">Hágalo</span>
-        <span className="mx-2 hidden sm:inline-block">/</span>
+        <span className="text-xl text-gray-500 mx-2 hidden sm:inline-block">
+          /
+        </span>
         <YouAreHere />
       </Link>
 
