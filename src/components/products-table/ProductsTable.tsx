@@ -1,11 +1,19 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getProducts } from "@/actions/actions-products";
 import { Product } from "@prisma/client";
 import { MoreVertical } from "lucide-react";
 
-interface Props {
-  products?: Product[];
-}
+export function ProductsTable() {
+  const [products, setProducts] = useState<Product[]>();
 
-export function ProductsTable({ products = [] }: Props) {
+  useEffect(() => {
+    (async () => {
+      const products = await getProducts();
+      setProducts(products);
+    })();
+  }, []);
   return (
     <div>
       <table className="w-full border-[1px] border-[#dadada] text-sm sm:text-base">
