@@ -4,3 +4,4 @@ export { TitlePage } from "./title-page/TitlePage";
 export { YouAreHere } from "./you-are-here/YouAreHere";
 export { Form } from "./form/Form";
 export { ProductsTable } from "./products-table/ProductsTable";
+export { Table } from "./table/Table";

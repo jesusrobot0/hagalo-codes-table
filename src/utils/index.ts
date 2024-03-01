@@ -1,1 +1,1 @@
-export { BASE_API_URL } from "./constants";
+export { getCategoryName } from "./getCategoryName";
