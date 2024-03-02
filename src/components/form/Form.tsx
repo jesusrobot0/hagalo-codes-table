@@ -80,7 +80,7 @@ export function Form({ categories }: Props) {
 
       <button
         type="submit"
-        className="w-full sm:w-[250px] py-4 rounded font-bold text-white bg-[#d03c34] hover:bg-[#d6524b]"
+        className="w-full sm:w-[250px] py-4 rounded font-bold text-white bg-[#283d69] hover:bg-[#3a5897]"
       >
         Guardar
       </button>

@@ -66,15 +66,15 @@ export function Table() {
 
   return (
     <div>
-      <div className="mb-4 flex justify-between items-center">
+      <div className="mb-4 flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center">
         <div className="flex items-center border border-[#ccc]">
           <button className="p-3 bg-white">
-            <Search />
+            <Search color="#283d69" />
           </button>
           <input
             type="text"
             placeholder="Buscar en la tabla"
-            className="w-[400px] p-3 border-l border-l-[#ccc] focus:outline-none"
+            className="w-[370px] p-3 border-l border-l-[#ccc] focus:outline-none  lg:w-[420px]"
             value={filtering}
             onChange={handleSearch}
           />
@@ -84,17 +84,17 @@ export function Table() {
             onClick={handlePrevious}
             className="border-r border-r-[#ccc] p-3"
           >
-            <ChevronLeft />
+            <ChevronLeft color="#283d69" />
           </button>
           <p className="p-3 text-gray-400">
-            <span className="text-gray-800 ">
+            <span className="text-gray-800">
               {table.getState().pagination.pageIndex + 1}
             </span>
             <span> de </span>
             {table.getPageCount()}
           </p>
           <button onClick={handleNext} className="border-l border-l-[#ccc] p-3">
-            <ChevronRight />
+            <ChevronRight color="#283d69" />
           </button>
         </div>
       </div>
