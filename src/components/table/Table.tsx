@@ -1,23 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Product } from "@prisma/client";
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { getProducts } from "@/actions/actions-products";
 import { CategoryTag } from "..";
-import {
-  ChevronFirst,
-  ChevronLast,
-  ChevronLeft,
-  ChevronRight,
-  Search,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 
 const columns: ColumnDef<Product>[] = [
   { header: "Código", accessorKey: "code" },
@@ -30,6 +25,7 @@ const columns: ColumnDef<Product>[] = [
 ];
 
 export function Table() {
+  const [filtering, setFiltering] = useState("");
   const [data, setData] = useState<Product[]>();
 
   const table = useReactTable({
@@ -37,6 +33,9 @@ export function Table() {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: { globalFilter: filtering },
+    onGlobalFilterChange: setFiltering,
   });
 
   // Meéodos de la paginación
@@ -53,6 +52,11 @@ export function Table() {
     table.nextPage();
   };
 
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    setFiltering((e.target as HTMLInputElement).value);
+  };
+
   useEffect(() => {
     (async () => {
       const products = await getProducts();
@@ -63,6 +67,18 @@ export function Table() {
   return (
     <div>
       <div className="mb-4 flex justify-between items-center">
+        <div className="flex items-center border border-[#ccc]">
+          <button className="p-3 bg-white">
+            <Search />
+          </button>
+          <input
+            type="text"
+            placeholder="Buscar en la tabla"
+            className="w-[400px] p-3 border-l border-l-[#ccc] focus:outline-none"
+            value={filtering}
+            onChange={handleSearch}
+          />
+        </div>
         <div className="flex items-center gap-4 border border-[#ccc] bg-white">
           <button
             onClick={handlePrevious}
