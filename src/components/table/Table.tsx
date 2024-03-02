@@ -74,7 +74,7 @@ export function Table() {
           <input
             type="text"
             placeholder="Buscar en la tabla"
-            className="w-[370px] p-3 border-l border-l-[#ccc] focus:outline-none  lg:w-[420px]"
+            className="w-[320px] p-3 border-l border-l-[#ccc] focus:outline-none  lg:w-[420px]"
             value={filtering}
             onChange={handleSearch}
           />
