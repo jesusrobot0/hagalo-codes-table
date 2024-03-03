@@ -92,7 +92,7 @@ export function Table() {
               Items <span className="hidden md:inline-block"> por página:</span>
             </span>
             <select
-              className="focus:outline-none cursor-pointer"
+              className="focus:outline-none cursor-pointer bg-white"
               value={table.getState().pagination.pageSize}
               onChange={(e) => {
                 table.setPageSize(Number(e.target.value));
