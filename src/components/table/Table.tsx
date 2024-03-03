@@ -72,7 +72,7 @@ export function Table() {
 
   return (
     <div>
-      <div className="mb-4 flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center">
+      <div className="mb-4 flex flex-col items-start gap-4 lg:flex-row lg:justify-between lg:items-center">
         <div className="flex items-center border border-[#ccc]">
           <button className="p-3 bg-white">
             <Search color="#283d69" />
@@ -80,16 +80,16 @@ export function Table() {
           <input
             type="text"
             placeholder="Buscar en la tabla"
-            className="w-[320px] p-2 md:p-3 border-l border-l-[#ccc] focus:outline-none  lg:w-[420px]"
+            className="w-[320px] p-3 border-l border-l-[#ccc] focus:outline-none  lg:w-[420px]"
             value={filtering}
             onChange={handleSearch}
           />
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="bg-white p-2 md:p-3 border border-[#ccc]">
+          <div className="bg-white p-3 border border-[#ccc]">
             <span className="text-gray-400">
-              Items <span className="hidden md:visible"> por página:</span>
+              Items <span className="hidden md:inline-block"> por página:</span>
             </span>
             <select
               className="focus:outline-none cursor-pointer"
@@ -109,11 +109,11 @@ export function Table() {
           <div className="flex items-center gap-4 border border-[#ccc] bg-white">
             <button
               onClick={handlePrevious}
-              className="border-r border-r-[#ccc] p-2 md:p-3 "
+              className="border-r border-r-[#ccc] p-3 "
             >
               <ChevronLeft color="#283d69" />
             </button>
-            <p className="p-2 md:p-3  text-gray-400">
+            <p className="p-3  text-gray-400">
               <span className="text-gray-800">
                 {table.getState().pagination.pageIndex + 1}
               </span>
@@ -122,7 +122,7 @@ export function Table() {
             </p>
             <button
               onClick={handleNext}
-              className="border-l border-l-[#ccc] p-2 md:p-3 "
+              className="border-l border-l-[#ccc] p-3 "
             >
               <ChevronRight color="#283d69" />
             </button>
